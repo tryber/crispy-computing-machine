@@ -5,10 +5,16 @@ class Clock extends Component {
     // O `Component` que importamos executa, internamente, um constructor próprio. Quando o customizamos desse jeito, precisamos chamar essa função `super(props)` para garantir que esse construtor dele é executado. Caso não chamássemos, somente a nossa lógica seria executada, e não a dele! Teríamos problemas! As `props` que repassamos aqui são as props do componente, se lembra?
     super(props);
     this.state = { date: new Date() };
+    this.counter = 0;
   }
 
   // A função `toLocaleTimeString()` é só para converter a data-hora que temos para o tipo string, para exibirmos-na bonitinha!
   render() {
+    this.counter += 1;
+    console.log(this.counter);
+    // Isso é ruim! Não faça isso!
+    setInterval(() => this.setState({ date: new Date() }), 1000);
+
     return (
       <div>
         <h1>Relógio</h1>
