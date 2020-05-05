@@ -7,8 +7,14 @@ class Clock extends Component {
     this.state = { date: new Date() };
   }
 
+  // A função `toLocaleTimeString()` é só para converter a data-hora que temos para o tipo string, para exibirmos-na bonitinha!
   render() {
-    return <span>Relógio</span>;
+    return (
+      <div>
+        <h1>Relógio</h1>
+        <h2>Agora são {this.state.date.toLocaleTimeString()}.</h2>
+      </div>
+    );
   }
 }
 
