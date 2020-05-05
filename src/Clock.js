@@ -8,12 +8,14 @@ class Clock extends Component {
     this.counter = 0;
   }
 
+  componentDidMount() {
+    setInterval(() => this.setState({ date: new Date() }), 1000);
+  }
+
   // A função `toLocaleTimeString()` é só para converter a data-hora que temos para o tipo string, para exibirmos-na bonitinha!
   render() {
     this.counter += 1;
     console.log(this.counter);
-    // Isso é ruim! Não faça isso!
-    setInterval(() => this.setState({ date: new Date() }), 1000);
 
     return (
       <div>
