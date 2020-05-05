@@ -8,8 +8,13 @@ class Clock extends Component {
     this.counter = 0;
   }
 
+  // Precisamos salvar o intervalo setado nessa variável para saber qual intervalo devemos remover ao desmontar o componente!
   componentDidMount() {
-    setInterval(() => this.setState({ date: new Date() }), 1000);
+    this.timerID = setInterval(() => this.setState({ date: new Date() }), 1000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timerID);
   }
 
   // A função `toLocaleTimeString()` é só para converter a data-hora que temos para o tipo string, para exibirmos-na bonitinha!
